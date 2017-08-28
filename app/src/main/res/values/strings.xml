@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="edit_message">Voer n waarde in</string>
+    <string name="button_send">Send</string>
+    <string name="AP_Calc">Bereken</string>
+    <string name="VP_Calc">Bereken</string>
+    <string name="VK_Calc">Bereken</string>
+    <string name="WP_Calc">Bereken</string>
+    <string name="AP_Label">Koop (R/kg)</string>
+    <string name="VP_Label">Verkoop (R/kg)</string>
+    <string name="VK_Label">Voer (R/ton)</string>
+    <string name="WP_Label">Wins (%)</string>
+    <string name="Gewig_Label">Gewig (kg)</string>
+    <string name="Prys_Label">Prys (R)</string>
+    <string name="Toggle_A_Graad">A Graad</string>
+    <string name="Toggle_C_Graad">C Graad</string>
+    <string name="Herstel_Button">Herstel</string>
+    <string name="WR_Label">R</string>
+</resources>
