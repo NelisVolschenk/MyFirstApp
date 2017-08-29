@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     // variable for storing whether currently at A or C grade
     static boolean A_of_C;
+
+    // Variables for empty fields
+    static int Koop;
+    static int Verkoop;
+    static int Wins;
 
 
 
@@ -79,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
         Main_Layout = (ConstraintLayout) findViewById(R.id.constraintLayout1);
 
     }
-
-
-
-
-
 
     public void Clear_Fields(View view) {
 
@@ -166,121 +167,96 @@ public class MainActivity extends AppCompatActivity {
 
 
         double AP;
-        double VP;
-        double VK;
-        double WP;
-        double Gewig;
-        double Prys;
-        double VO;
-        double DI;
-        double Dae;
-        double Uitslag;
-
-        //AP = Double.parseDouble(AP_Text.getText().toString());
-        VP = Double.parseDouble(VP_Text.getText().toString());
-        VK = Double.parseDouble(VK_Text.getText().toString());
-        WP = Double.parseDouble(WP_Text.getText().toString());
-        Gewig = Double.parseDouble(Gewig_Text.getText().toString());
-        //Prys = Double.parseDouble(Prys_Text.getText().toString());
-        A_of_C = A_Of_C_Toggle.isChecked();
+        double AG;
+        double AR;
 
 
-        if (A_of_C){
-
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 139;
-            Uitslag = 56.0/100;
-
-        } else {
-
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 68;
-            Uitslag = 50.0/100;
-
+        // Use binary counting starting from 1 to be able to identify which string is empty
+        Koop = 0;
+        if (AP_Text.getText().toString().equals("")) {
+            Koop+=1;
+        }
+        if (AG_Text.getText().toString().equals("")){
+            Koop+=2;
+        }
+        if (AR_Text.getText().toString().equals("")){
+            Koop+=4;
         }
 
-
-
-        AP = (VP*Uitslag*Math.pow((1+VO*DI),Dae)*(365/Dae))/(365/Dae+WP/100) - (Math.pow((1+VO*DI),Dae)-1)*VK/(1000*VO);
-        AP = Math.round(AP*100)/100.0;
-        AP_Text.setText(Double.toString(AP));
-
-        Prys = Gewig * AP;
-        Prys_Text.setText(Double.toString(Prys));
+        if (Koop == 1 || Koop == 2 || Koop == 4){
+            switch(Koop){
+                case 1:
+                    AG = Double.parseDouble(AG_Text.getText().toString());
+                    AR = Double.parseDouble(AR_Text.getText().toString());
+                    AP = AR/AG;
+                    AP_Text.setText(Double.toString(AP));
+                case 2:
+                    AP = Double.parseDouble(AP_Text.getText().toString());
+                    AR = Double.parseDouble(AR_Text.getText().toString());
+                    AG = AR/AP;
+                    AG_Text.setText(Double.toString(AG));
+                case 4:
+                    AP = Double.parseDouble(AP_Text.getText().toString());
+                    AG = Double.parseDouble(AG_Text.getText().toString());
+                    AR = AP*AG;
+                    AR_Text.setText(Double.toString(AR));
+            }
+        } else if (Koop == 0) {
+            Toast.makeText(getApplicationContext(),"Konflik by Koop",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(),"Onvolledige by Koop",Toast.LENGTH_SHORT).show();
+        }
     }
 
 
-    /*
+
 
     public void Calc_VP(View view) {
 
-        double AP_A=0;
-        double AP_C=0;
-        double VP_A=0;
-        double VP_C=0;
-        double VK_A=0;
-        double VK_C=0;
-        double WP_A=0;
-        double WP_C=0;
-        double Gewig_A=0;
-        double Gewig_C=0;
-        double Prys_A=0;
-        double Prys_C=0;
-        boolean A_of_C;
-
-        EditText AP_Text = (EditText) findViewById(R.id.editText1);
-        EditText VP_Text = (EditText) findViewById(R.id.editText2);
-        EditText VK_Text = (EditText) findViewById(R.id.editText3);
-        EditText WP_Text = (EditText) findViewById(R.id.editText4);
-        EditText Gewig_Text = (EditText) findViewById(R.id.editText5);
-        EditText Prys_Text = (EditText) findViewById(R.id.editText6);
-        ToggleButton A_Of_C_Toggle = (ToggleButton) findViewById(R.id.toggleButton);
-        ConstraintLayout Main_Layout = (ConstraintLayout) findViewById(R.id.constraintLayout1);
-
-        double AP;
         double VP;
-        double VK;
-        double WP;
-        double Gewig;
-        double Prys;
-        double VO;
-        double DI;
-        double Dae;
-        double Uitslag;
+        double VG;
+        double VR;
 
-        AP = Double.parseDouble(AP_Text.getText().toString());
-        //VP = Double.parseDouble(VP_Text.getText().toString());
-        VK = Double.parseDouble(VK_Text.getText().toString());
-        WP = Double.parseDouble(WP_Text.getText().toString());
-        Gewig = Double.parseDouble(Gewig_Text.getText().toString());
-        A_of_C = A_Of_C_Toggle.isChecked();
 
-        if (A_of_C){
-
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 139;
-            Uitslag = 56.0/100;
-
-        } else {
-
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 68;
-            Uitslag = 50.0/100;
-
+        // Use binary counting starting from 1 to be able to identify which string is empty
+        Koop = 0;
+        if (VP_Text.getText().toString().equals("")) {
+            Koop+=1;
+        }
+        if (VG_Text.getText().toString().equals("")){
+            Koop+=2;
+        }
+        if (VR_Text.getText().toString().equals("")){
+            Koop+=4;
         }
 
-        Prys = Gewig * AP;
-        Prys_Text.setText(Double.toString(Prys));
-
-        VP = (AP+(Math.pow((1+VO*DI),Dae)-1)*VK/(1000*VO))*(365/Dae+WP/100)/(Uitslag*Math.pow((1+VO*DI),Dae)*365/Dae);
-        VP_Text.setText(Double.toString(VP));
+        if (Koop == 1 || Koop == 2 || Koop == 4){
+            switch(Koop){
+                case 1:
+                    VG = Double.parseDouble(VG_Text.getText().toString());
+                    VR = Double.parseDouble(VR_Text.getText().toString());
+                    VP = VR/VG;
+                    VP_Text.setText(Double.toString(VP));
+                case 2:
+                    VP = Double.parseDouble(VP_Text.getText().toString());
+                    VR = Double.parseDouble(VR_Text.getText().toString());
+                    VG = VR/VP;
+                    VG_Text.setText(Double.toString(VG));
+                case 4:
+                    VP = Double.parseDouble(VP_Text.getText().toString());
+                    VG = Double.parseDouble(VG_Text.getText().toString());
+                    VR = VP*VG;
+                    AR_Text.setText(Double.toString(VR));
+            }
+        } else if (Koop == 0) {
+            Toast.makeText(getApplicationContext(),"Konflik by Verkoop",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(),"Onvolledige by Verkoop",Toast.LENGTH_SHORT).show();
+        }
 
     }
 
+/*
 
     public void Calc_VK(View view) {
 
