@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                 VR = VP*VG;
                 AR_Text.setText(Double.toString(VR));
             case 7:
-                // Calculate a value
+                Toast.makeText(getApplicationContext(),"Onvoldoende by Verkoop",Toast.LENGTH_SHORT).show();
             }
 
 
