@@ -11,6 +11,7 @@ import android.widget.ToggleButton;
 public class MainActivity extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
     double Gewig_C=0;
     double Prys_A=0;
     double Prys_C=0;
+
+
+    public void Clear_Fields(View view) {
+
+
+    }
 
 
     public void Change_Toggle(View view) {
@@ -180,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
         Prys_Text.setText(Double.toString(Prys));
     }
 
+
+    /*
 
     public void Calc_VP(View view) {
 
@@ -385,5 +394,7 @@ public class MainActivity extends AppCompatActivity {
         WP_Text.setText(Double.toString(WP));
 
     }
+
+    */
 
 }
