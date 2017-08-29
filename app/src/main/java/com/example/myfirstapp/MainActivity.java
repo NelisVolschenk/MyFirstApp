@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (Koop == 0) {
             Toast.makeText(getApplicationContext(),"Konflik by Koop",Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(),"Onvolledige by Koop",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Onvolledig by Koop",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -219,19 +219,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Use binary counting starting from 1 to be able to identify which string is empty
-        Koop = 0;
+        Verkoop = 0;
         if (VP_Text.getText().toString().equals("")) {
-            Koop+=1;
+            Verkoop+=1;
         }
         if (VG_Text.getText().toString().equals("")){
-            Koop+=2;
+            Verkoop+=2;
         }
         if (VR_Text.getText().toString().equals("")){
-            Koop+=4;
+            Verkoop+=4;
         }
 
-        if (Koop == 1 || Koop == 2 || Koop == 4){
-            switch(Koop){
+        if (Verkoop == 1 || Verkoop == 2 || Verkoop == 4){
+            switch(Verkoop){
                 case 1:
                     VG = Double.parseDouble(VG_Text.getText().toString());
                     VR = Double.parseDouble(VR_Text.getText().toString());
@@ -248,10 +248,10 @@ public class MainActivity extends AppCompatActivity {
                     VR = VP*VG;
                     AR_Text.setText(Double.toString(VR));
             }
-        } else if (Koop == 0) {
+        } else if (Verkoop == 0) {
             Toast.makeText(getApplicationContext(),"Konflik by Verkoop",Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(),"Onvolledige by Verkoop",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Onvolledig by Verkoop",Toast.LENGTH_SHORT).show();
         }
 
     }
