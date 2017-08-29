@@ -10,26 +10,79 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variables for storing A Grade values of edittext fields
+    static double AP_A=0;
+    static double AG_A=0;
+    static double AR_A=0;
+
+    static double VP_A=0;
+    static double VG_A=0;
+    static double VR_A=0;
+
+    static double VK_A=0;
+    static double WP_A=0;
+    static double WR_A=0;
+
+    // Variables for storing C Grade values of edittext fields
+    static double AP_C=0;
+    static double AG_C=0;
+    static double AR_C=0;
+
+    static double VP_C=0;
+    static double VG_C=0;
+    static double VR_C=0;
+
+    static double VK_C=0;
+    static double WP_C=0;
+    static double WR_C=0;
+
+    // variable for storing whether currently at A or C grade
+    static boolean A_of_C;
+
+
+
+    static EditText AP_Text;
+    static EditText AG_Text;
+    static EditText AR_Text;
+
+    static EditText VP_Text;
+    static EditText VG_Text;
+    static EditText VR_Text;
+
+    static EditText VK_Text;
+    static EditText WP_Text;
+    static EditText WR_Text;
+
+    static ToggleButton A_Of_C_Toggle;
+    static ConstraintLayout Main_Layout;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AP_Text = (EditText) findViewById(R.id.editText1);
+        AG_Text = (EditText) findViewById(R.id.editText5);
+        AR_Text = (EditText) findViewById(R.id.editText6);
+
+        VP_Text = (EditText) findViewById(R.id.editText2);
+        VG_Text = (EditText) findViewById(R.id.editText7);
+        VR_Text = (EditText) findViewById(R.id.editText8);
+
+        VK_Text = (EditText) findViewById(R.id.editText3);
+        WP_Text = (EditText) findViewById(R.id.editText4);
+        WR_Text = (EditText) findViewById(R.id.editText9);
+
+        A_Of_C_Toggle = (ToggleButton) findViewById(R.id.toggleButton);
+        Main_Layout = (ConstraintLayout) findViewById(R.id.constraintLayout1);
+
     }
 
-    double AP_A=0;
-    double AP_C=0;
-    double VP_A=0;
-    double VP_C=0;
-    double VK_A=0;
-    double VK_C=0;
-    double WP_A=0;
-    double WP_C=0;
-    double Gewig_A=0;
-    double Gewig_C=0;
-    double Prys_A=0;
-    double Prys_C=0;
+
+
+
 
 
     public void Clear_Fields(View view) {
@@ -40,32 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void Change_Toggle(View view) {
 
-
-
-        boolean A_of_C;
-
-        EditText AP_Text = (EditText) findViewById(R.id.editText1);
-        EditText VP_Text = (EditText) findViewById(R.id.editText2);
-        EditText VK_Text = (EditText) findViewById(R.id.editText3);
-        EditText WP_Text = (EditText) findViewById(R.id.editText4);
-        EditText Gewig_Text = (EditText) findViewById(R.id.editText5);
-        EditText Prys_Text = (EditText) findViewById(R.id.editText6);
-        ToggleButton A_Of_C_Toggle = (ToggleButton) findViewById(R.id.toggleButton);
-        ConstraintLayout Main_Layout = (ConstraintLayout) findViewById(R.id.constraintLayout1);
-
-        double AP;
-        double VP;
-        double VK;
-        double WP;
-        double Gewig;
-        double Prys;
-        double VO;
-        double DI;
-        double Dae;
-        double Uitslag;
-
-
-
         A_of_C = A_Of_C_Toggle.isChecked();
 
         if(A_of_C){
@@ -75,41 +102,60 @@ public class MainActivity extends AppCompatActivity {
 
             // Collect C Grade values
             AP_C = Double.parseDouble(AP_Text.getText().toString());
+            AG_C = Double.parseDouble(AG_Text.getText().toString());
+            AR_C = Double.parseDouble(AR_Text.getText().toString());
+
             VP_C = Double.parseDouble(VP_Text.getText().toString());
+            VG_C = Double.parseDouble(VG_Text.getText().toString());
+            VR_C = Double.parseDouble(VR_Text.getText().toString());
+
             VK_C = Double.parseDouble(VK_Text.getText().toString());
             WP_C = Double.parseDouble(WP_Text.getText().toString());
-            Gewig_C = Double.parseDouble(Gewig_Text.getText().toString());
-            Prys_C = Double.parseDouble(Prys_Text.getText().toString());
+            WR_C = Double.parseDouble(WR_Text.getText().toString());
 
             // Input stored A Grade Values
             AP_Text.setText(Double.toString(AP_A));
+            AG_Text.setText(Double.toString(AG_A));
+            AR_Text.setText(Double.toString(AR_A));
+
             VP_Text.setText(Double.toString(VP_A));
+            VP_Text.setText(Double.toString(VP_A));
+            VR_Text.setText(Double.toString(VR_A));
+
             VK_Text.setText(Double.toString(VK_A));
             WP_Text.setText(Double.toString(WP_A));
-            Gewig_Text.setText(Double.toString(Gewig_A));
-            Prys_Text.setText(Double.toString(Prys_A));
+            WR_Text.setText(Double.toString(WR_A));
 
 
         } else {
             // Change Background colour to blue
             Main_Layout.setBackgroundResource(android.R.color.holo_blue_light);
 
-            // Collect A Grade values
+            // Collect C Grade values
             AP_A = Double.parseDouble(AP_Text.getText().toString());
+            AG_A = Double.parseDouble(AG_Text.getText().toString());
+            AR_A = Double.parseDouble(AR_Text.getText().toString());
+
             VP_A = Double.parseDouble(VP_Text.getText().toString());
+            VG_A = Double.parseDouble(VG_Text.getText().toString());
+            VR_A = Double.parseDouble(VR_Text.getText().toString());
+
             VK_A = Double.parseDouble(VK_Text.getText().toString());
             WP_A = Double.parseDouble(WP_Text.getText().toString());
-            Gewig_A = Double.parseDouble(Gewig_Text.getText().toString());
-            Prys_A = Double.parseDouble(Prys_Text.getText().toString());
+            WR_A = Double.parseDouble(WR_Text.getText().toString());
 
-
-            // Input stored C Grade Values
+            // Input stored A Grade Values
             AP_Text.setText(Double.toString(AP_C));
+            AG_Text.setText(Double.toString(AG_C));
+            AR_Text.setText(Double.toString(AR_C));
+
             VP_Text.setText(Double.toString(VP_C));
+            VP_Text.setText(Double.toString(VP_C));
+            VR_Text.setText(Double.toString(VR_C));
+
             VK_Text.setText(Double.toString(VK_C));
             WP_Text.setText(Double.toString(WP_C));
-            Gewig_Text.setText(Double.toString(Gewig_C));
-            Prys_Text.setText(Double.toString(Prys_C));
+            WR_Text.setText(Double.toString(WR_C));
 
         }
 
@@ -118,28 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void Calc_AP(View view) {
 
-        double AP_A=0;
-        double AP_C=0;
-        double VP_A=0;
-        double VP_C=0;
-        double VK_A=0;
-        double VK_C=0;
-        double WP_A=0;
-        double WP_C=0;
-        double Gewig_A=0;
-        double Gewig_C=0;
-        double Prys_A=0;
-        double Prys_C=0;
-        boolean A_of_C;
-
-        EditText AP_Text = (EditText) findViewById(R.id.editText1);
-        EditText VP_Text = (EditText) findViewById(R.id.editText2);
-        EditText VK_Text = (EditText) findViewById(R.id.editText3);
-        EditText WP_Text = (EditText) findViewById(R.id.editText4);
-        EditText Gewig_Text = (EditText) findViewById(R.id.editText5);
-        EditText Prys_Text = (EditText) findViewById(R.id.editText6);
-        ToggleButton A_Of_C_Toggle = (ToggleButton) findViewById(R.id.toggleButton);
-        ConstraintLayout Main_Layout = (ConstraintLayout) findViewById(R.id.constraintLayout1);
 
         double AP;
         double VP;
