@@ -47,7 +47,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginEnd="16dp" app:layout_constraintBaseline_toBaselineOf="@+id/editText2"
             android:textStyle="bold" android:textSize="14sp" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="@+id/button" app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintLeft_toLeftOf="@+id/button" app:layout_constraintHorizontal_bias="1.0"
+            android:onClick="Calc_VP"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -67,7 +68,7 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/editText3" android:layout_marginRight="8dp"
             android:textStyle="bold" android:layout_marginEnd="16dp" android:textSize="14sp"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" android:onClick="Calc_WP"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"

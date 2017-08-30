@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -294,6 +295,8 @@ public class MainActivity extends AppCompatActivity {
             Uitslag = 50.0/100;
         }
 
+        // Doen eenvoudige berekeninge
+
         Koop = 0;
         if (AP_Text.getText().toString().equals("")) {
             Koop+=1;
@@ -327,6 +330,8 @@ public class MainActivity extends AppCompatActivity {
             Wins+=4;
         }
 
+
+
         // Fill out Koop section
         switch(Koop){
             case 0:
@@ -347,27 +352,46 @@ public class MainActivity extends AppCompatActivity {
                 AG = AR/AP;
                 AG_Text.setText(Double.toString(AG));
             case 3:
-                // calculate a value
+                // Calc AG from VG
+                if (Verkoop != 2 ||Verkoop != 3 ||Verkoop != 6 ||Verkoop != 7){
+                    VG = Double.parseDouble(VG_Text.getText().toString());
+                    AR = Double.parseDouble(AR_Text.getText().toString());
+                    AG = VG / Math.pow((1 + VO * DI), Dae);
+                    AP = AR/AG;
+                    AG_Text.setText(Double.toString(AG));
+                    AP_Text.setText(Double.toString(AP));
+                }
             case 4:
                 AP = Double.parseDouble(AP_Text.getText().toString());
                 AG = Double.parseDouble(AG_Text.getText().toString());
                 AR = AP*AG;
                 AR_Text.setText(Double.toString(AR));
             case 5:
-                // Calculate a value
+                // Calculate a value or error
+
             case 6:
-                // calculate a value
+                // Calc AG from VG
+                if (Verkoop != 2 ||Verkoop != 3 ||Verkoop != 6 ||Verkoop != 7){
+                    VG = Double.parseDouble(VG_Text.getText().toString());
+                    AP = Double.parseDouble(AP_Text.getText().toString());
+                    AG = VG / Math.pow((1 + VO * DI), Dae);
+                    AR = AG*AP;
+                    AG_Text.setText(Double.toString(AG));
+                    AR_Text.setText(Double.toString(AR));
+                }
             case 7:
-                Toast.makeText(getApplicationContext(),"Onvoldoende by Koop",Toast.LENGTH_SHORT).show();
+                // Calc AG from VG
+                if (Verkoop != 2 ||Verkoop != 3 ||Verkoop != 6 ||Verkoop != 7){
+                    VG = Double.parseDouble(VG_Text.getText().toString());
+                    AG = VG / Math.pow((1 + VO * DI), Dae);
+                    AG_Text.setText(Double.toString(AG));
+                } else {
+                    Toast.makeText(getApplicationContext(),"Onvoldoende by Koop",Toast.LENGTH_SHORT).show();
+                }
+
         }
 
-        // Fill out Verkoop Section
-        if (Verkoop == 3 || Verkoop == 6) {
-            // Calculate VG
-            AG = Double.parseDouble(AG_Text.getText().toString());
-            VG = AG * Math.pow((1 + VO * DI), Dae);
-            VG_Text.setText(Double.toString(VG));
-        }
+        // Fill out Verkoop
         switch (Verkoop) {
             case 0:
                 VP = Double.parseDouble(VP_Text.getText().toString());
@@ -387,58 +411,69 @@ public class MainActivity extends AppCompatActivity {
                 VG = VR/VP;
                 VG_Text.setText(Double.toString(VG));
             case 3:
-                VR = Double.parseDouble(VR_Text.getText().toString());
-                VP = VR/VG;
-                VP_Text.setText(Double.toString(VP));
+                if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
+                    // Calculate VG
+                    AG = Double.parseDouble(AG_Text.getText().toString());
+                    VR = Double.parseDouble(VR_Text.getText().toString());
+                    VG = AG * Math.pow((1 + VO * DI), Dae);
+                    VP = VR/VG;
+                    VG_Text.setText(Double.toString(VG));
+                    VP_Text.setText(Double.toString(VP));
+                }
             case 4:
                 VP = Double.parseDouble(VP_Text.getText().toString());
                 VG = Double.parseDouble(VG_Text.getText().toString());
                 VR = VP*VG;
                 AR_Text.setText(Double.toString(VR));
             case 5:
-                // Calculate a value
+                // Calculate in next section
             case 6:
-                VP = Double.parseDouble(VP_Text.getText().toString());
-                VR = VP*VG;
-                AR_Text.setText(Double.toString(VR));
+                if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
+                    // Calculate VG
+                    AG = Double.parseDouble(AG_Text.getText().toString());
+                    VP = Double.parseDouble(VP_Text.getText().toString());
+                    VG = AG * Math.pow((1 + VO * DI), Dae);
+                    VR = VP*VG;
+                    VG_Text.setText(Double.toString(VG));
+                    VR_Text.setText(Double.toString(VR));
+                }
             case 7:
+                if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
+                    // Calculate VG
+                    AG = Double.parseDouble(AG_Text.getText().toString());
+                    VG = AG * Math.pow((1 + VO * DI), Dae);
+                    VG_Text.setText(Double.toString(VG));
+                }
                 Toast.makeText(getApplicationContext(),"Onvoldoende by Verkoop",Toast.LENGTH_SHORT).show();
             }
 
+        // Calculate further
 
 
-        AP = Double.parseDouble(AP_Text.getText().toString());
-        VP = Double.parseDouble(VP_Text.getText().toString());
-        //WP = Double.parseDouble(WP_Text.getText().toString());
-        Gewig = Double.parseDouble(Gewig_Text.getText().toString());
-        A_of_C = A_Of_C_Toggle.isChecked();
 
-        if (A_of_C){
 
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 139;
-            Uitslag = 56.0/100;
+        // Bereken Wins
+        if (Wins == 1 || Wins ==3 || Wins == 5 || Wins == 7){
+            Toast.makeText(getApplicationContext(),"Spesifiseer 'n Voerkoste",Toast.LENGTH_SHORT).show();
 
-        } else {
+        } else if(Wins == 0 ||Wins == 2 ||Wins == 4 || Wins == 6){
+            switch(Wins){
+                case 0:
+                    // heelwaarskynlik overspecified
+                    Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+                case 2:
+                    if(Koop == 5){
+                        Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+                    }
 
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 68;
-            Uitslag = 50.0/100;
+                case 4:
+                    if (Koop == 5){
+                        Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+                    }
 
+                case 6:
+                    Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+            }
         }
-
-        Prys = Gewig * AP;
-        Prys_Text.setText(Double.toString(Prys));
-
-
-        WP=(((VP*Uitslag*Math.pow((1+VO*DI),Dae))/(AP+(Math.pow((1+VO*DI),Dae)-1)*VK/(VO*1000))-1)*365/Dae)*100;
-        WP=(double) Math.round(WP*100)/100.0;
-        WP_Text.setText(Double.toString(WP));
-
     }
-
-
-
 }
