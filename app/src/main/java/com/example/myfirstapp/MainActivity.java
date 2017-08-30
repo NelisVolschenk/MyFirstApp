@@ -88,7 +88,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Clear_Fields(View view) {
+        AP_Text.setText("");
+        AG_Text.setText("");
+        AR_Text.setText("");
 
+        VP_Text.setText("");
+        VP_Text.setText("");
+        VR_Text.setText("");
+
+        VK_Text.setText("");
+        WP_Text.setText("");
+        WR_Text.setText("");
 
     }
 
@@ -191,19 +201,27 @@ public class MainActivity extends AppCompatActivity {
                     AR = Double.parseDouble(AR_Text.getText().toString());
                     AP = AR/AG;
                     AP_Text.setText(Double.toString(AP));
+                    break;
                 case 2:
                     AP = Double.parseDouble(AP_Text.getText().toString());
                     AR = Double.parseDouble(AR_Text.getText().toString());
                     AG = AR/AP;
                     AG_Text.setText(Double.toString(AG));
+                    break;
                 case 4:
                     AP = Double.parseDouble(AP_Text.getText().toString());
                     AG = Double.parseDouble(AG_Text.getText().toString());
                     AR = AP*AG;
                     AR_Text.setText(Double.toString(AR));
+                    break;
             }
         } else if (Koop == 0) {
-            Toast.makeText(getApplicationContext(),"Konflik by Koop",Toast.LENGTH_SHORT).show();
+            AP = Double.parseDouble(AP_Text.getText().toString());
+            AG = Double.parseDouble(AG_Text.getText().toString());
+            AR = Double.parseDouble(AR_Text.getText().toString());
+            if (AR != AP*AG){
+                Toast.makeText(getApplicationContext(),"Konflik by Koop",Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(getApplicationContext(),"Onvolledig by Koop",Toast.LENGTH_SHORT).show();
         }
@@ -218,6 +236,27 @@ public class MainActivity extends AppCompatActivity {
         double VG;
         double VR;
 
+        double VO;
+        double DI;
+        double Dae;
+        double Uitslag;
+        boolean Bereken_Koop;
+        boolean Bereken_Verkoop;
+        boolean Bereken_Wins;
+
+        // Check if A or C Grade
+        A_of_C = A_Of_C_Toggle.isChecked();
+        if (A_of_C){
+            VO = 1.0/6;
+            DI = 3.0/100;
+            Dae = 139;
+            Uitslag = 56.0/100;
+        } else {
+            VO = 1.0/6;
+            DI = 3.0/100;
+            Dae = 68;
+            Uitslag = 50.0/100;
+        }
 
         // Use binary counting starting from 1 to be able to identify which string is empty
         Verkoop = 0;
@@ -236,21 +275,29 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     VG = Double.parseDouble(VG_Text.getText().toString());
                     VR = Double.parseDouble(VR_Text.getText().toString());
-                    VP = VR/VG;
+                    VP = VR/(VG*Uitslag);
                     VP_Text.setText(Double.toString(VP));
+                    break;
                 case 2:
                     VP = Double.parseDouble(VP_Text.getText().toString());
                     VR = Double.parseDouble(VR_Text.getText().toString());
-                    VG = VR/VP;
+                    VG = VR/(VP*Uitslag);
                     VG_Text.setText(Double.toString(VG));
+                    break;
                 case 4:
                     VP = Double.parseDouble(VP_Text.getText().toString());
                     VG = Double.parseDouble(VG_Text.getText().toString());
-                    VR = VP*VG;
-                    AR_Text.setText(Double.toString(VR));
+                    VR = VP*(VG*Uitslag);
+                    VR_Text.setText(Double.toString(VR));
+                    break;
             }
         } else if (Verkoop == 0) {
-            Toast.makeText(getApplicationContext(),"Konflik by Verkoop",Toast.LENGTH_SHORT).show();
+            VP = Double.parseDouble(VP_Text.getText().toString());
+            VG = Double.parseDouble(VG_Text.getText().toString());
+            VR = Double.parseDouble(VR_Text.getText().toString());
+            if (VR != VP*Uitslag*VG){
+                Toast.makeText(getApplicationContext(),"Konflik by Verkoop",Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(getApplicationContext(),"Onvolledig by Verkoop",Toast.LENGTH_SHORT).show();
         }
@@ -271,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
 
         double VK;
         double WP;
-
+        double WR;
 
         double VO;
         double DI;
@@ -341,16 +388,19 @@ public class MainActivity extends AppCompatActivity {
                 if (AR != AP*AG){
                     Toast.makeText(getApplicationContext(),"Konflik by Koop",Toast.LENGTH_SHORT).show();
                 }
+                break;
             case 1:
                 AG = Double.parseDouble(AG_Text.getText().toString());
                 AR = Double.parseDouble(AR_Text.getText().toString());
                 AP = AR/AG;
                 AP_Text.setText(Double.toString(AP));
+                break;
             case 2:
                 AP = Double.parseDouble(AP_Text.getText().toString());
                 AR = Double.parseDouble(AR_Text.getText().toString());
                 AG = AR/AP;
                 AG_Text.setText(Double.toString(AG));
+                break;
             case 3:
                 // Calc AG from VG
                 if (Verkoop != 2 ||Verkoop != 3 ||Verkoop != 6 ||Verkoop != 7){
@@ -361,13 +411,16 @@ public class MainActivity extends AppCompatActivity {
                     AG_Text.setText(Double.toString(AG));
                     AP_Text.setText(Double.toString(AP));
                 }
+                break;
             case 4:
                 AP = Double.parseDouble(AP_Text.getText().toString());
                 AG = Double.parseDouble(AG_Text.getText().toString());
                 AR = AP*AG;
                 AR_Text.setText(Double.toString(AR));
+                break;
             case 5:
-                // Calculate a value or error
+                // Calculate next round
+                break;
 
             case 6:
                 // Calc AG from VG
@@ -379,6 +432,7 @@ public class MainActivity extends AppCompatActivity {
                     AG_Text.setText(Double.toString(AG));
                     AR_Text.setText(Double.toString(AR));
                 }
+                break;
             case 7:
                 // Calc AG from VG
                 if (Verkoop != 2 ||Verkoop != 3 ||Verkoop != 6 ||Verkoop != 7){
@@ -388,6 +442,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(),"Onvoldoende by Koop",Toast.LENGTH_SHORT).show();
                 }
+                break;
 
         }
 
@@ -397,46 +452,53 @@ public class MainActivity extends AppCompatActivity {
                 VP = Double.parseDouble(VP_Text.getText().toString());
                 VG = Double.parseDouble(VG_Text.getText().toString());
                 VR = Double.parseDouble(VR_Text.getText().toString());
-                if (VR != VP*VG){
+                if (VR != VP*Uitslag*VG){
                     Toast.makeText(getApplicationContext(),"Konflik by Verkoop",Toast.LENGTH_SHORT).show();
                 }
+                break;
             case 1:
                 VG = Double.parseDouble(VG_Text.getText().toString());
                 VR = Double.parseDouble(VR_Text.getText().toString());
-                VP = VR/VG;
+                VP = VR/(VG*Uitslag);
                 VP_Text.setText(Double.toString(VP));
+                break;
             case 2:
                 VP = Double.parseDouble(VP_Text.getText().toString());
                 VR = Double.parseDouble(VR_Text.getText().toString());
-                VG = VR/VP;
+                VG = VR/(VP*Uitslag);
                 VG_Text.setText(Double.toString(VG));
+                break;
             case 3:
                 if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
                     // Calculate VG
                     AG = Double.parseDouble(AG_Text.getText().toString());
                     VR = Double.parseDouble(VR_Text.getText().toString());
                     VG = AG * Math.pow((1 + VO * DI), Dae);
-                    VP = VR/VG;
+                    VP = VR/(VG*Uitslag);
                     VG_Text.setText(Double.toString(VG));
                     VP_Text.setText(Double.toString(VP));
                 }
+                break;
             case 4:
                 VP = Double.parseDouble(VP_Text.getText().toString());
                 VG = Double.parseDouble(VG_Text.getText().toString());
-                VR = VP*VG;
-                AR_Text.setText(Double.toString(VR));
+                VR = VP*(VG*Uitslag);
+                VR_Text.setText(Double.toString(VR));
+                break;
             case 5:
                 // Calculate in next section
+                break;
             case 6:
                 if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
                     // Calculate VG
                     AG = Double.parseDouble(AG_Text.getText().toString());
                     VP = Double.parseDouble(VP_Text.getText().toString());
                     VG = AG * Math.pow((1 + VO * DI), Dae);
-                    VR = VP*VG;
+                    VR = VP*(VG*Uitslag);
                     VG_Text.setText(Double.toString(VG));
                     VR_Text.setText(Double.toString(VR));
                 }
+                break;
             case 7:
                 if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
                     // Calculate VG
@@ -445,7 +507,9 @@ public class MainActivity extends AppCompatActivity {
                     VG_Text.setText(Double.toString(VG));
                 }
                 Toast.makeText(getApplicationContext(),"Onvoldoende by Verkoop",Toast.LENGTH_SHORT).show();
+                break;
             }
+
 
         // Calculate further
 
@@ -460,19 +524,92 @@ public class MainActivity extends AppCompatActivity {
             switch(Wins){
                 case 0:
                     // heelwaarskynlik overspecified
-                    Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Konflik by Wins",Toast.LENGTH_SHORT).show();
+                    break;
+                case 4:
+                    if(Koop == 5){
+                        if(Verkoop != 5){
+                            VR = Double.parseDouble(VR_Text.getText().toString());
+                            WP = Double.parseDouble(WP_Text.getText().toString());
+                            VG = Double.parseDouble(VG_Text.getText().toString());
+                            AG = Double.parseDouble(AG_Text.getText().toString());
+                            VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                            AR = (VR*100)/WP - (VG-AG)*VK/VO;
+                            AP = AR/AG;
+                            WR = VR - AR - (VG-AG)*VK/VO;
+                            AR_Text.setText(Double.toString(AR));
+                            AP_Text.setText(Double.toString(AP));
+                            WR_Text.setText(Double.toString(WR));
+                        }
+                    } else if (Verkoop ==5){
+                        if (Koop !=5){
+                            WP = Double.parseDouble(WP_Text.getText().toString());
+                            AR = Double.parseDouble(AR_Text.getText().toString());
+                            VG = Double.parseDouble(VG_Text.getText().toString());
+                            AG = Double.parseDouble(AG_Text.getText().toString());
+                            VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                            VR = (WP/100+1)*(AR+(VG-AG)*VK/VO);
+                            VP = VR/(VG*Uitslag);
+                            WR = VR - AR - (VG-AG)*VK/VO;
+                            VR_Text.setText(Double.toString(VR));
+                            VP_Text.setText(Double.toString(VP));
+                            WR_Text.setText(Double.toString(WR));
+                        }
+
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
+                    }
+                    break;
                 case 2:
                     if(Koop == 5){
-                        Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
-                    }
+                        if(Verkoop != 5){
+                            VR = Double.parseDouble(VR_Text.getText().toString());
+                            WR = Double.parseDouble(WR_Text.getText().toString());
+                            VG = Double.parseDouble(VG_Text.getText().toString());
+                            AG = Double.parseDouble(AG_Text.getText().toString());
+                            VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                            AR = VR - WR - ((VG-AG)*VK)/VO;
+                            AP = AR/AG;
+                            WP = ((VR/(AR+(VG-AG)*VK/VO))-1)*100;
+                            AR_Text.setText(Double.toString(AR));
+                            AP_Text.setText(Double.toString(AP));
+                            WP_Text.setText(Double.toString(WP));
+                        }
+                    } else if (Verkoop ==5){
+                        if (Koop !=5){
+                            AR = Double.parseDouble(AR_Text.getText().toString());
+                            WR = Double.parseDouble(WR_Text.getText().toString());
+                            VG = Double.parseDouble(VG_Text.getText().toString());
+                            AG = Double.parseDouble(AG_Text.getText().toString());
+                            VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                            VR = AR + WR + ((VG-AG)*VK)/VO;
+                            VP = VR/(VG*Uitslag);
+                            WP = ((VR/(AR+(VG-AG)*VK/VO))-1)*100;
+                            VR_Text.setText(Double.toString(VR));
+                            VP_Text.setText(Double.toString(VP));
+                            WP_Text.setText(Double.toString(WP));
+                        }
 
-                case 4:
-                    if (Koop == 5){
-                        Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
                     }
-
+                    break;
                 case 6:
-                    Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+                    if (Koop == 0 & Verkoop ==0){
+                        AR = Double.parseDouble(AR_Text.getText().toString());
+                        VR = Double.parseDouble(VR_Text.getText().toString());
+                        VG = Double.parseDouble(VG_Text.getText().toString());
+                        AG = Double.parseDouble(AG_Text.getText().toString());
+                        VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                        WP = ((VR/(AR+(VG-AG)*VK/VO))-1)*100;
+                        WR = VR - AR - (VG-AG)*VK/VO;
+                        WP_Text.setText(Double.toString(WP));
+                        WR_Text.setText(Double.toString(WR));
+
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
+                    }
+                    break;
             }
         }
     }
