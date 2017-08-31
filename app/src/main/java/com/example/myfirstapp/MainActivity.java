@@ -113,17 +113,54 @@ public class MainActivity extends AppCompatActivity {
             Main_Layout.setBackgroundResource(android.R.color.holo_green_light);
 
             // Collect C Grade values
-            AP_C = Double.parseDouble(AP_Text.getText().toString());
-            AG_C = Double.parseDouble(AG_Text.getText().toString());
-            AR_C = Double.parseDouble(AR_Text.getText().toString());
+            if (!AP_Text.getText().toString().equals("")){
+                AP_C = Double.parseDouble(AP_Text.getText().toString());
+            } else {
+                AP_C = 0;
+            }
+            if (!AG_Text.getText().toString().equals("")){
+                AG_C = Double.parseDouble(AG_Text.getText().toString());
+            } else {
+                AG_C = 0;
+            }
+            if (!AR_Text.getText().toString().equals("")){
+                AR_C = Double.parseDouble(AR_Text.getText().toString());
+            } else {
+                AR_C = 0;
+            }
 
-            VP_C = Double.parseDouble(VP_Text.getText().toString());
-            VG_C = Double.parseDouble(VG_Text.getText().toString());
-            VR_C = Double.parseDouble(VR_Text.getText().toString());
 
-            VK_C = Double.parseDouble(VK_Text.getText().toString());
-            WP_C = Double.parseDouble(WP_Text.getText().toString());
-            WR_C = Double.parseDouble(WR_Text.getText().toString());
+            if (!VP_Text.getText().toString().equals("")){
+                VP_C = Double.parseDouble(VP_Text.getText().toString());
+            } else {
+                VP_C = 0;
+            }
+            if (!VG_Text.getText().toString().equals("")){
+                VG_C = Double.parseDouble(VG_Text.getText().toString());
+            } else {
+                VG_C = 0;
+            }
+            if (!VR_Text.getText().toString().equals("")){
+                VR_C = Double.parseDouble(VR_Text.getText().toString());
+            } else {
+                VR_C = 0;
+            }
+
+            if (!VK_Text.getText().toString().equals("")){
+                VK_C = Double.parseDouble(VK_Text.getText().toString());
+            } else {
+                VK_C = 0;
+            }
+            if (!WP_Text.getText().toString().equals("")){
+                WP_C = Double.parseDouble(WP_Text.getText().toString());
+            } else {
+                WP_C = 0;
+            }
+            if (!WR_Text.getText().toString().equals("")){
+                WR_C = Double.parseDouble(WR_Text.getText().toString());
+            } else {
+                WR_C = 0;
+            }
 
             // Input stored A Grade Values
             AP_Text.setText(Double.toString(AP_A));
@@ -143,18 +180,55 @@ public class MainActivity extends AppCompatActivity {
             // Change Background colour to blue
             Main_Layout.setBackgroundResource(android.R.color.holo_blue_light);
 
-            // Collect C Grade values
-            AP_A = Double.parseDouble(AP_Text.getText().toString());
-            AG_A = Double.parseDouble(AG_Text.getText().toString());
-            AR_A = Double.parseDouble(AR_Text.getText().toString());
+            // Collect A Grade values
+            if (!AP_Text.getText().toString().equals("")){
+                AP_A = Double.parseDouble(AP_Text.getText().toString());
+            } else {
+                AP_A = 0;
+            }
+            if (!AG_Text.getText().toString().equals("")){
+                AG_A = Double.parseDouble(AG_Text.getText().toString());
+            } else {
+                AG_A = 0;
+            }
+            if (!AR_Text.getText().toString().equals("")){
+                AR_A = Double.parseDouble(AR_Text.getText().toString());
+            } else {
+                AR_A = 0;
+            }
 
-            VP_A = Double.parseDouble(VP_Text.getText().toString());
-            VG_A = Double.parseDouble(VG_Text.getText().toString());
-            VR_A = Double.parseDouble(VR_Text.getText().toString());
 
-            VK_A = Double.parseDouble(VK_Text.getText().toString());
-            WP_A = Double.parseDouble(WP_Text.getText().toString());
-            WR_A = Double.parseDouble(WR_Text.getText().toString());
+            if (!VP_Text.getText().toString().equals("")){
+                VP_A = Double.parseDouble(VP_Text.getText().toString());
+            } else {
+                VP_A = 0;
+            }
+            if (!VG_Text.getText().toString().equals("")){
+                VG_A = Double.parseDouble(VG_Text.getText().toString());
+            } else {
+                VG_A = 0;
+            }
+            if (!VR_Text.getText().toString().equals("")){
+                VR_A = Double.parseDouble(VR_Text.getText().toString());
+            } else {
+                VR_A = 0;
+            }
+
+            if (!VK_Text.getText().toString().equals("")){
+                VK_A = Double.parseDouble(VK_Text.getText().toString());
+            } else {
+                VK_A = 0;
+            }
+            if (!WP_Text.getText().toString().equals("")){
+                WP_A = Double.parseDouble(WP_Text.getText().toString());
+            } else {
+                WP_A = 0;
+            }
+            if (!WR_Text.getText().toString().equals("")){
+                WR_A = Double.parseDouble(WR_Text.getText().toString());
+            } else {
+                WR_A = 0;
+            }
 
             // Input stored A Grade Values
             AP_Text.setText(Double.toString(AP_C));
