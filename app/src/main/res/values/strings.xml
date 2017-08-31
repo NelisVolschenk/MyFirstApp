@@ -10,7 +10,7 @@
     <string name="VP_Label">Verkoop (R/kg)</string>
     <string name="VK_Label">Voer (R/ton)</string>
     <string name="WP_Label">Wins (%)</string>
-    <string name="Gewig_Label">Gewig (kg)</string>
+    <string name="Gewig_Label">(kg)</string>
     <string name="Prys_Label">Prys (R)</string>
     <string name="Toggle_A_Graad">A Graad</string>
     <string name="Toggle_C_Graad">C Graad</string>
