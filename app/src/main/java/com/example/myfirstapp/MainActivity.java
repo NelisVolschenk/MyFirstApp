@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         AR_Text.setText("");
 
         VP_Text.setText("");
-        VP_Text.setText("");
+        VG_Text.setText("");
         VR_Text.setText("");
 
         VK_Text.setText("");
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             AR_Text.setText(Double.toString(AR_A));
 
             VP_Text.setText(Double.toString(VP_A));
-            VP_Text.setText(Double.toString(VP_A));
+            VG_Text.setText(Double.toString(VG_A));
             VR_Text.setText(Double.toString(VR_A));
 
             VK_Text.setText(Double.toString(VK_A));
@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
             AR_Text.setText(Double.toString(AR_C));
 
             VP_Text.setText(Double.toString(VP_C));
-            VP_Text.setText(Double.toString(VP_C));
+            VG_Text.setText(Double.toString(VG_C));
             VR_Text.setText(Double.toString(VR_C));
 
             VK_Text.setText(Double.toString(VK_C));
@@ -587,8 +587,38 @@ public class MainActivity extends AppCompatActivity {
 
         // Calculate further
 
+        Koop = 0;
+        if (AP_Text.getText().toString().equals("")) {
+            Koop+=1;
+        }
+        if (AG_Text.getText().toString().equals("")){
+            Koop+=2;
+        }
+        if (AR_Text.getText().toString().equals("")){
+            Koop+=4;
+        }
 
+        Verkoop = 0;
+        if (VP_Text.getText().toString().equals("")) {
+            Verkoop+=1;
+        }
+        if (VG_Text.getText().toString().equals("")){
+            Verkoop+=2;
+        }
+        if (VR_Text.getText().toString().equals("")){
+            Verkoop+=4;
+        }
 
+        Wins = 0;
+        if (VK_Text.getText().toString().equals("")) {
+            Wins+=1;
+        }
+        if (WP_Text.getText().toString().equals("")){
+            Wins+=2;
+        }
+        if (WR_Text.getText().toString().equals("")){
+            Wins+=4;
+        }
 
         // Bereken Wins
         if (Wins == 1 || Wins ==3 || Wins == 5 || Wins == 7){
