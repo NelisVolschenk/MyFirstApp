@@ -232,5 +232,6 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/toggleButton"
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/button1" android:text="@string/Herstel_Button"
-            android:layout_marginEnd="16dp" android:textSize="14sp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginEnd="16dp" android:textSize="14sp" app:layout_constraintHorizontal_bias="0.0"
+            android:onClick="Clear_Fields"/>
 </android.support.constraint.ConstraintLayout>
