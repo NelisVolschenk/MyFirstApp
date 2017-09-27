@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             if (VP_A==0){
                 VP_Text.setText("");
             } else {
-                VP_Text.setText(Double.toString(VP_A));
+                VP_Text.setText(twoprecision.format(VP_A));
             }
             if (VG_A==0){
                 VG_Text.setText("");
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
             if (WP_A==0){
                 WP_Text.setText("");
             } else {
-                WP_Text.setText(Double.toString(WP_A));
+                WP_Text.setText(twoprecision.format(WP_A));
             }
             if (WR_A==0){
                 WR_Text.setText("");
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
             if (AP_C==0){
                 AP_Text.setText("");
             } else {
-                AP_Text.setText(Double.toString(AP_C));
+                AP_Text.setText(twoprecision.format(AP_C));
             }
             if (AG_C==0){
                 AG_Text.setText("");
@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
             if (VP_C==0){
                 VP_Text.setText("");
             } else {
-                VP_Text.setText(Double.toString(VP_C));
+                VP_Text.setText(twoprecision.format(VP_C));
             }
             if (VG_C==0){
                 VG_Text.setText("");
@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
             if (WP_C==0){
                 WP_Text.setText("");
             } else {
-                WP_Text.setText(Double.toString(WP_C));
+                WP_Text.setText(twoprecision.format(WP_C));
             }
             if (WR_C==0){
                 WR_Text.setText("");
@@ -350,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
                     AG = Double.parseDouble(AG_Text.getText().toString());
                     AR = Double.parseDouble(AR_Text.getText().toString());
                     AP = AR/AG;
-                    AP_Text.setText(Double.toString(AP));
+                    AP_Text.setText(twoprecision.format(AP));
                     break;
                 case 2:
                     AP = Double.parseDouble(AP_Text.getText().toString());
@@ -426,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
                     VG = Double.parseDouble(VG_Text.getText().toString());
                     VR = Double.parseDouble(VR_Text.getText().toString());
                     VP = VR/(VG*Uitslag);
-                    VP_Text.setText(Double.toString(VP));
+                    VP_Text.setText(twoprecision.format(VP));
                     break;
                 case 2:
                     VP = Double.parseDouble(VP_Text.getText().toString());
@@ -543,7 +543,7 @@ public class MainActivity extends AppCompatActivity {
                 AG = Double.parseDouble(AG_Text.getText().toString());
                 AR = Double.parseDouble(AR_Text.getText().toString());
                 AP = AR/AG;
-                AP_Text.setText(Double.toString(AP));
+                AP_Text.setText(twoprecision.format(AP));
                 break;
             case 2:
                 AP = Double.parseDouble(AP_Text.getText().toString());
@@ -559,7 +559,7 @@ public class MainActivity extends AppCompatActivity {
                     AG = VG / Math.pow((1 + VO * DI), Dae);
                     AP = AR/AG;
                     AG_Text.setText(zeroprecision.format(AG));
-                    AP_Text.setText(Double.toString(AP));
+                    AP_Text.setText(twoprecision.format(AP));
                 }
                 break;
             case 4:
@@ -610,7 +610,7 @@ public class MainActivity extends AppCompatActivity {
                 VG = Double.parseDouble(VG_Text.getText().toString());
                 VR = Double.parseDouble(VR_Text.getText().toString());
                 VP = VR/(VG*Uitslag);
-                VP_Text.setText(Double.toString(VP));
+                VP_Text.setText(twoprecision.format(VP));
                 break;
             case 2:
                 VP = Double.parseDouble(VP_Text.getText().toString());
@@ -626,7 +626,7 @@ public class MainActivity extends AppCompatActivity {
                     VG = AG * Math.pow((1 + VO * DI), Dae);
                     VP = VR/(VG*Uitslag);
                     VG_Text.setText(zeroprecision.format(VG));
-                    VP_Text.setText(Double.toString(VP));
+                    VP_Text.setText(twoprecision.format(VP));
                 }
                 break;
             case 4:
@@ -718,7 +718,7 @@ public class MainActivity extends AppCompatActivity {
                             AP = AR/AG;
                             WR = VR - AR - (VG-AG)*VK/VO;
                             AR_Text.setText(zeroprecision.format(AR));
-                            AP_Text.setText(Double.toString(AP));
+                            AP_Text.setText(twoprecision.format(AP));
                             WR_Text.setText(zeroprecision.format(WR));
                         }
                     } else if (Verkoop ==5){
@@ -732,7 +732,7 @@ public class MainActivity extends AppCompatActivity {
                             VP = VR/(VG*Uitslag);
                             WR = VR - AR - (VG-AG)*VK/VO;
                             VR_Text.setText(zeroprecision.format(VR));
-                            VP_Text.setText(Double.toString(VP));
+                            VP_Text.setText(twoprecision.format(VP));
                             WR_Text.setText(zeroprecision.format(WR));
                         }
 
@@ -760,8 +760,8 @@ public class MainActivity extends AppCompatActivity {
                             AP = AR/AG;
                             WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                             AR_Text.setText(zeroprecision.format(AR));
-                            AP_Text.setText(Double.toString(AP));
-                            WP_Text.setText(Double.toString(WP));
+                            AP_Text.setText(twoprecision.format(AP));
+                            WP_Text.setText(twoprecision.format(WP));
                         }
                     } else if (Verkoop ==5){
                         if (Koop !=5){
@@ -774,8 +774,8 @@ public class MainActivity extends AppCompatActivity {
                             VP = VR/(VG*Uitslag);
                             WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                             VR_Text.setText(zeroprecision.format(VR));
-                            VP_Text.setText(Double.toString(VP));
-                            WP_Text.setText(Double.toString(WP));
+                            VP_Text.setText(twoprecision.format(VP));
+                            WP_Text.setText(twoprecision.format(WP));
                         }
                     } else if(Koop ==0 & Verkoop ==0) {
                         VR = Double.parseDouble(VR_Text.getText().toString());
@@ -784,7 +784,7 @@ public class MainActivity extends AppCompatActivity {
                         AG = Double.parseDouble(AG_Text.getText().toString());
                         VK = Double.parseDouble(VK_Text.getText().toString())/1000;
                         WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
-                        WP_Text.setText(Double.toString(WP));
+                        WP_Text.setText(twoprecision.format(WP));
                     } else {
                         Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
                     }
@@ -798,7 +798,7 @@ public class MainActivity extends AppCompatActivity {
                         VK = Double.parseDouble(VK_Text.getText().toString())/1000;
                         WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                         WR = VR - AR - (VG-AG)*VK/VO;
-                        WP_Text.setText(Double.toString(WP));
+                        WP_Text.setText(twoprecision.format(WP));
                         WR_Text.setText(zeroprecision.format(WR));
 
                     } else {
