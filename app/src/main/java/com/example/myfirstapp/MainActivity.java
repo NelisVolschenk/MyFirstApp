@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
     ToggleButton A_Of_C_Toggle;
     ConstraintLayout Main_Layout;
+
+    DecimalFormat zeroprecision = new DecimalFormat("0");
+    DecimalFormat twoprecision = new DecimalFormat("0.##");
 
 
 
@@ -166,17 +170,17 @@ public class MainActivity extends AppCompatActivity {
             if (AP_A==0){
                 AP_Text.setText("");
             } else {
-                AP_Text.setText(Double.toString(AP_A));
+                AP_Text.setText(twoprecision.format(AP_A));
             }
             if (AG_A==0){
                 AG_Text.setText("");
             } else {
-                AG_Text.setText(Double.toString(AG_A));
+                AG_Text.setText(zeroprecision.format(AG_A));
             }
             if (AR_A==0){
                 AR_Text.setText("");
             } else {
-                AR_Text.setText(Double.toString(AR_A));
+                AR_Text.setText(zeroprecision.format(AR_A));
             }
 
             if (VP_A==0){
@@ -187,18 +191,18 @@ public class MainActivity extends AppCompatActivity {
             if (VG_A==0){
                 VG_Text.setText("");
             } else {
-                VG_Text.setText(Double.toString(VG_A));
+                VG_Text.setText(zeroprecision.format(VG_A));
             }
             if (VR_A==0){
                 VR_Text.setText("");
             } else {
-                VR_Text.setText(Double.toString(VR_A));
+                VR_Text.setText(zeroprecision.format(VR_A));
             }
 
             if (VK_A==0){
                 VK_Text.setText("");
             } else {
-                VK_Text.setText(Double.toString(VK_A));
+                VK_Text.setText(zeroprecision.format(VK_A));
             }
             if (WP_A==0){
                 WP_Text.setText("");
@@ -208,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
             if (WR_A==0){
                 WR_Text.setText("");
             } else {
-                WR_Text.setText(Double.toString(WR_A));
+                WR_Text.setText(zeroprecision.format(WR_A));
             }
 
 
@@ -275,12 +279,12 @@ public class MainActivity extends AppCompatActivity {
             if (AG_C==0){
                 AG_Text.setText("");
             } else {
-                AG_Text.setText(Double.toString(AG_C));
+                AG_Text.setText(zeroprecision.format(AG_C));
             }
             if (AR_C==0){
                 AR_Text.setText("");
             } else {
-                AR_Text.setText(Double.toString(AR_C));
+                AR_Text.setText(zeroprecision.format(AR_C));
             }
 
             if (VP_C==0){
@@ -291,18 +295,18 @@ public class MainActivity extends AppCompatActivity {
             if (VG_C==0){
                 VG_Text.setText("");
             } else {
-                VG_Text.setText(Double.toString(VG_C));
+                VG_Text.setText(zeroprecision.format(VG_C));
             }
             if (VR_C==0){
                 VR_Text.setText("");
             } else {
-                VR_Text.setText(Double.toString(VR_C));
+                VR_Text.setText(zeroprecision.format(VR_C));
             }
 
             if (VK_C==0){
                 VK_Text.setText("");
             } else {
-                VK_Text.setText(Double.toString(VK_C));
+                VK_Text.setText(zeroprecision.format(VK_C));
             }
             if (WP_C==0){
                 WP_Text.setText("");
@@ -312,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
             if (WR_C==0){
                 WR_Text.setText("");
             } else {
-                WR_Text.setText(Double.toString(WR_C));
+                WR_Text.setText(zeroprecision.format(WR_C));
             }
 
         }
@@ -352,13 +356,13 @@ public class MainActivity extends AppCompatActivity {
                     AP = Double.parseDouble(AP_Text.getText().toString());
                     AR = Double.parseDouble(AR_Text.getText().toString());
                     AG = AR/AP;
-                    AG_Text.setText(Double.toString(AG));
+                    AG_Text.setText(zeroprecision.format(AG));
                     break;
                 case 4:
                     AP = Double.parseDouble(AP_Text.getText().toString());
                     AG = Double.parseDouble(AG_Text.getText().toString());
                     AR = AP*AG;
-                    AR_Text.setText(Double.toString(AR));
+                    AR_Text.setText(zeroprecision.format(AR));
                     break;
             }
         } else if (Koop == 0) {
@@ -428,13 +432,13 @@ public class MainActivity extends AppCompatActivity {
                     VP = Double.parseDouble(VP_Text.getText().toString());
                     VR = Double.parseDouble(VR_Text.getText().toString());
                     VG = VR/(VP*Uitslag);
-                    VG_Text.setText(Double.toString(VG));
+                    VG_Text.setText(zeroprecision.format(VG));
                     break;
                 case 4:
                     VP = Double.parseDouble(VP_Text.getText().toString());
                     VG = Double.parseDouble(VG_Text.getText().toString());
                     VR = VP*(VG*Uitslag);
-                    VR_Text.setText(Double.toString(VR));
+                    VR_Text.setText(zeroprecision.format(VR));
                     break;
             }
         } else if (Verkoop == 0) {
@@ -545,7 +549,7 @@ public class MainActivity extends AppCompatActivity {
                 AP = Double.parseDouble(AP_Text.getText().toString());
                 AR = Double.parseDouble(AR_Text.getText().toString());
                 AG = AR/AP;
-                AG_Text.setText(Double.toString(AG));
+                AG_Text.setText(zeroprecision.format(AG));
                 break;
             case 3:
                 // Calc AG from VG
@@ -554,7 +558,7 @@ public class MainActivity extends AppCompatActivity {
                     AR = Double.parseDouble(AR_Text.getText().toString());
                     AG = VG / Math.pow((1 + VO * DI), Dae);
                     AP = AR/AG;
-                    AG_Text.setText(Double.toString(AG));
+                    AG_Text.setText(zeroprecision.format(AG));
                     AP_Text.setText(Double.toString(AP));
                 }
                 break;
@@ -562,7 +566,7 @@ public class MainActivity extends AppCompatActivity {
                 AP = Double.parseDouble(AP_Text.getText().toString());
                 AG = Double.parseDouble(AG_Text.getText().toString());
                 AR = AP*AG;
-                AR_Text.setText(Double.toString(AR));
+                AR_Text.setText(zeroprecision.format(AR));
                 break;
             case 5:
                 // Calculate next round
@@ -575,8 +579,8 @@ public class MainActivity extends AppCompatActivity {
                     AP = Double.parseDouble(AP_Text.getText().toString());
                     AG = VG / Math.pow((1 + VO * DI), Dae);
                     AR = AG*AP;
-                    AG_Text.setText(Double.toString(AG));
-                    AR_Text.setText(Double.toString(AR));
+                    AG_Text.setText(zeroprecision.format(AG));
+                    AR_Text.setText(zeroprecision.format(AR));
                 }
                 break;
             case 7:
@@ -584,7 +588,7 @@ public class MainActivity extends AppCompatActivity {
                 if (Verkoop != 2 ||Verkoop != 3 ||Verkoop != 6 ||Verkoop != 7){
                     VG = Double.parseDouble(VG_Text.getText().toString());
                     AG = VG / Math.pow((1 + VO * DI), Dae);
-                    AG_Text.setText(Double.toString(AG));
+                    AG_Text.setText(zeroprecision.format(AG));
                 } else {
                     Toast.makeText(getApplicationContext(),"Onvoldoende by Koop",Toast.LENGTH_SHORT).show();
                 }
@@ -612,7 +616,7 @@ public class MainActivity extends AppCompatActivity {
                 VP = Double.parseDouble(VP_Text.getText().toString());
                 VR = Double.parseDouble(VR_Text.getText().toString());
                 VG = VR/(VP*Uitslag);
-                VG_Text.setText(Double.toString(VG));
+                VG_Text.setText(zeroprecision.format(VG));
                 break;
             case 3:
                 if (Koop != 2 || Koop!= 3 || Koop!= 6 || Koop!= 7){
@@ -621,7 +625,7 @@ public class MainActivity extends AppCompatActivity {
                     VR = Double.parseDouble(VR_Text.getText().toString());
                     VG = AG * Math.pow((1 + VO * DI), Dae);
                     VP = VR/(VG*Uitslag);
-                    VG_Text.setText(Double.toString(VG));
+                    VG_Text.setText(zeroprecision.format(VG));
                     VP_Text.setText(Double.toString(VP));
                 }
                 break;
@@ -629,7 +633,7 @@ public class MainActivity extends AppCompatActivity {
                 VP = Double.parseDouble(VP_Text.getText().toString());
                 VG = Double.parseDouble(VG_Text.getText().toString());
                 VR = VP*(VG*Uitslag);
-                VR_Text.setText(Double.toString(VR));
+                VR_Text.setText(zeroprecision.format(VR));
                 break;
             case 5:
                 // Calculate in next section
@@ -641,8 +645,8 @@ public class MainActivity extends AppCompatActivity {
                     VP = Double.parseDouble(VP_Text.getText().toString());
                     VG = AG * Math.pow((1 + VO * DI), Dae);
                     VR = VP*(VG*Uitslag);
-                    VG_Text.setText(Double.toString(VG));
-                    VR_Text.setText(Double.toString(VR));
+                    VG_Text.setText(zeroprecision.format(VG));
+                    VR_Text.setText(zeroprecision.format(VR));
                 }
                 break;
             case 7:
@@ -650,7 +654,7 @@ public class MainActivity extends AppCompatActivity {
                     // Calculate VG
                     AG = Double.parseDouble(AG_Text.getText().toString());
                     VG = AG * Math.pow((1 + VO * DI), Dae);
-                    VG_Text.setText(Double.toString(VG));
+                    VG_Text.setText(zeroprecision.format(VG));
                 }
                 Toast.makeText(getApplicationContext(),"Onvoldoende by Verkoop",Toast.LENGTH_SHORT).show();
                 break;
@@ -713,9 +717,9 @@ public class MainActivity extends AppCompatActivity {
                             AR = (VR*100)/WP - (VG-AG)*VK/VO;
                             AP = AR/AG;
                             WR = VR - AR - (VG-AG)*VK/VO;
-                            AR_Text.setText(Double.toString(AR));
+                            AR_Text.setText(zeroprecision.format(AR));
                             AP_Text.setText(Double.toString(AP));
-                            WR_Text.setText(Double.toString(WR));
+                            WR_Text.setText(zeroprecision.format(WR));
                         }
                     } else if (Verkoop ==5){
                         if (Koop !=5){
@@ -727,9 +731,9 @@ public class MainActivity extends AppCompatActivity {
                             VR = (WP/100+1)*(AR+(VG-AG)*VK/VO);
                             VP = VR/(VG*Uitslag);
                             WR = VR - AR - (VG-AG)*VK/VO;
-                            VR_Text.setText(Double.toString(VR));
+                            VR_Text.setText(zeroprecision.format(VR));
                             VP_Text.setText(Double.toString(VP));
-                            WR_Text.setText(Double.toString(WR));
+                            WR_Text.setText(zeroprecision.format(WR));
                         }
 
                     } else if(Koop ==0 & Verkoop ==0) {
@@ -739,7 +743,7 @@ public class MainActivity extends AppCompatActivity {
                         AG = Double.parseDouble(AG_Text.getText().toString());
                         VK = Double.parseDouble(VK_Text.getText().toString())/1000;
                         WR = VR - AR - (VG-AG)*VK/VO;
-                        WR_Text.setText(Double.toString(WR));
+                        WR_Text.setText(zeroprecision.format(WR));
                     } else {
                         Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
                     }
@@ -755,7 +759,7 @@ public class MainActivity extends AppCompatActivity {
                             AR = VR - WR - ((VG-AG)*VK)/VO;
                             AP = AR/AG;
                             WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
-                            AR_Text.setText(Double.toString(AR));
+                            AR_Text.setText(zeroprecision.format(AR));
                             AP_Text.setText(Double.toString(AP));
                             WP_Text.setText(Double.toString(WP));
                         }
@@ -769,7 +773,7 @@ public class MainActivity extends AppCompatActivity {
                             VR = AR + WR + ((VG-AG)*VK)/VO;
                             VP = VR/(VG*Uitslag);
                             WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
-                            VR_Text.setText(Double.toString(VR));
+                            VR_Text.setText(zeroprecision.format(VR));
                             VP_Text.setText(Double.toString(VP));
                             WP_Text.setText(Double.toString(WP));
                         }
@@ -795,7 +799,7 @@ public class MainActivity extends AppCompatActivity {
                         WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                         WR = VR - AR - (VG-AG)*VK/VO;
                         WP_Text.setText(Double.toString(WP));
-                        WR_Text.setText(Double.toString(WR));
+                        WR_Text.setText(zeroprecision.format(WR));
 
                     } else {
                         Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
