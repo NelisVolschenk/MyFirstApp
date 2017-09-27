@@ -48,20 +48,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    static EditText AP_Text;
-    static EditText AG_Text;
-    static EditText AR_Text;
+    EditText AP_Text;
+    EditText AG_Text;
+    EditText AR_Text;
 
-    static EditText VP_Text;
-    static EditText VG_Text;
-    static EditText VR_Text;
+    EditText VP_Text;
+    EditText VG_Text;
+    EditText VR_Text;
 
-    static EditText VK_Text;
-    static EditText WP_Text;
-    static EditText WR_Text;
+    EditText VK_Text;
+    EditText WP_Text;
+    EditText WR_Text;
 
-    static ToggleButton A_Of_C_Toggle;
-    static ConstraintLayout Main_Layout;
+    ToggleButton A_Of_C_Toggle;
+    ConstraintLayout Main_Layout;
 
 
 
@@ -163,17 +163,53 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Input stored A Grade Values
-            AP_Text.setText(Double.toString(AP_A));
-            AG_Text.setText(Double.toString(AG_A));
-            AR_Text.setText(Double.toString(AR_A));
+            if (AP_A==0){
+                AP_Text.setText("");
+            } else {
+                AP_Text.setText(Double.toString(AP_A));
+            }
+            if (AG_A==0){
+                AG_Text.setText("");
+            } else {
+                AG_Text.setText(Double.toString(AG_A));
+            }
+            if (AR_A==0){
+                AR_Text.setText("");
+            } else {
+                AR_Text.setText(Double.toString(AR_A));
+            }
 
-            VP_Text.setText(Double.toString(VP_A));
-            VG_Text.setText(Double.toString(VG_A));
-            VR_Text.setText(Double.toString(VR_A));
+            if (VP_A==0){
+                VP_Text.setText("");
+            } else {
+                VP_Text.setText(Double.toString(VP_A));
+            }
+            if (VG_A==0){
+                VG_Text.setText("");
+            } else {
+                VG_Text.setText(Double.toString(VG_A));
+            }
+            if (VR_A==0){
+                VR_Text.setText("");
+            } else {
+                VR_Text.setText(Double.toString(VR_A));
+            }
 
-            VK_Text.setText(Double.toString(VK_A));
-            WP_Text.setText(Double.toString(WP_A));
-            WR_Text.setText(Double.toString(WR_A));
+            if (VK_A==0){
+                VK_Text.setText("");
+            } else {
+                VK_Text.setText(Double.toString(VK_A));
+            }
+            if (WP_A==0){
+                WP_Text.setText("");
+            } else {
+                WP_Text.setText(Double.toString(WP_A));
+            }
+            if (WR_A==0){
+                WR_Text.setText("");
+            } else {
+                WR_Text.setText(Double.toString(WR_A));
+            }
 
 
         } else {
@@ -231,17 +267,53 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Input stored A Grade Values
-            AP_Text.setText(Double.toString(AP_C));
-            AG_Text.setText(Double.toString(AG_C));
-            AR_Text.setText(Double.toString(AR_C));
+            if (AP_C==0){
+                AP_Text.setText("");
+            } else {
+                AP_Text.setText(Double.toString(AP_C));
+            }
+            if (AG_C==0){
+                AG_Text.setText("");
+            } else {
+                AG_Text.setText(Double.toString(AG_C));
+            }
+            if (AR_C==0){
+                AR_Text.setText("");
+            } else {
+                AR_Text.setText(Double.toString(AR_C));
+            }
 
-            VP_Text.setText(Double.toString(VP_C));
-            VG_Text.setText(Double.toString(VG_C));
-            VR_Text.setText(Double.toString(VR_C));
+            if (VP_C==0){
+                VP_Text.setText("");
+            } else {
+                VP_Text.setText(Double.toString(VP_C));
+            }
+            if (VG_C==0){
+                VG_Text.setText("");
+            } else {
+                VG_Text.setText(Double.toString(VG_C));
+            }
+            if (VR_C==0){
+                VR_Text.setText("");
+            } else {
+                VR_Text.setText(Double.toString(VR_C));
+            }
 
-            VK_Text.setText(Double.toString(VK_C));
-            WP_Text.setText(Double.toString(WP_C));
-            WR_Text.setText(Double.toString(WR_C));
+            if (VK_C==0){
+                VK_Text.setText("");
+            } else {
+                VK_Text.setText(Double.toString(VK_C));
+            }
+            if (WP_C==0){
+                WP_Text.setText("");
+            } else {
+                WP_Text.setText(Double.toString(WP_C));
+            }
+            if (WR_C==0){
+                WR_Text.setText("");
+            } else {
+                WR_Text.setText(Double.toString(WR_C));
+            }
 
         }
 
@@ -660,6 +732,14 @@ public class MainActivity extends AppCompatActivity {
                             WR_Text.setText(Double.toString(WR));
                         }
 
+                    } else if(Koop ==0 & Verkoop ==0) {
+                        VR = Double.parseDouble(VR_Text.getText().toString());
+                        AR = Double.parseDouble(AR_Text.getText().toString());
+                        VG = Double.parseDouble(VG_Text.getText().toString());
+                        AG = Double.parseDouble(AG_Text.getText().toString());
+                        VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                        WR = VR - AR - (VG-AG)*VK/VO;
+                        WR_Text.setText(Double.toString(WR));
                     } else {
                         Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
                     }
@@ -674,7 +754,7 @@ public class MainActivity extends AppCompatActivity {
                             VK = Double.parseDouble(VK_Text.getText().toString())/1000;
                             AR = VR - WR - ((VG-AG)*VK)/VO;
                             AP = AR/AG;
-                            WP = ((VR/(AR+(VG-AG)*VK/VO))-1)*100;
+                            WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                             AR_Text.setText(Double.toString(AR));
                             AP_Text.setText(Double.toString(AP));
                             WP_Text.setText(Double.toString(WP));
@@ -688,12 +768,19 @@ public class MainActivity extends AppCompatActivity {
                             VK = Double.parseDouble(VK_Text.getText().toString())/1000;
                             VR = AR + WR + ((VG-AG)*VK)/VO;
                             VP = VR/(VG*Uitslag);
-                            WP = ((VR/(AR+(VG-AG)*VK/VO))-1)*100;
+                            WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                             VR_Text.setText(Double.toString(VR));
                             VP_Text.setText(Double.toString(VP));
                             WP_Text.setText(Double.toString(WP));
                         }
-
+                    } else if(Koop ==0 & Verkoop ==0) {
+                        VR = Double.parseDouble(VR_Text.getText().toString());
+                        AR = Double.parseDouble(AR_Text.getText().toString());
+                        VG = Double.parseDouble(VG_Text.getText().toString());
+                        AG = Double.parseDouble(AG_Text.getText().toString());
+                        VK = Double.parseDouble(VK_Text.getText().toString())/1000;
+                        WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
+                        WP_Text.setText(Double.toString(WP));
                     } else {
                         Toast.makeText(getApplicationContext(),"Onvolledige inlighting",Toast.LENGTH_SHORT).show();
                     }
@@ -705,7 +792,7 @@ public class MainActivity extends AppCompatActivity {
                         VG = Double.parseDouble(VG_Text.getText().toString());
                         AG = Double.parseDouble(AG_Text.getText().toString());
                         VK = Double.parseDouble(VK_Text.getText().toString())/1000;
-                        WP = ((VR/(AR+(VG-AG)*VK/VO))-1)*100;
+                        WP = Math.round(((VR/(AR+(VG-AG)*VK/VO))-1)*100*100)/100.0;
                         WR = VR - AR - (VG-AG)*VK/VO;
                         WP_Text.setText(Double.toString(WP));
                         WR_Text.setText(Double.toString(WR));
