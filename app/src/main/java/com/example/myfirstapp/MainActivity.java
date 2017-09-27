@@ -1,12 +1,10 @@
 package com.example.myfirstapp;
 
-import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import java.text.DecimalFormat;
@@ -386,25 +384,13 @@ public class MainActivity extends AppCompatActivity {
         double VG;
         double VR;
 
-        double VO;
-        double DI;
-        double Dae;
         double Uitslag;
-        boolean Bereken_Koop;
-        boolean Bereken_Verkoop;
-        boolean Bereken_Wins;
 
         // Check if A or C Grade
         A_of_C = A_Of_C_Toggle.isChecked();
         if (A_of_C){
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 139;
             Uitslag = 56.0/100;
         } else {
-            VO = 1.0/6;
-            DI = 3.0/100;
-            Dae = 68;
             Uitslag = 50.0/100;
         }
 
@@ -474,9 +460,6 @@ public class MainActivity extends AppCompatActivity {
         double DI;
         double Dae;
         double Uitslag;
-        boolean Bereken_Koop;
-        boolean Bereken_Verkoop;
-        boolean Bereken_Wins;
 
         // Check if A or C Grade
         A_of_C = A_Of_C_Toggle.isChecked();
